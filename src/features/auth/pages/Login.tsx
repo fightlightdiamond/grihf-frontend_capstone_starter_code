@@ -2,7 +2,7 @@
 
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import ShowStatus from '../../../common/components/ShowStatus';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch } from '../../../common/hooks';
 import { useTypedSelector } from '../../../app/stores';
 import { selectAuth, selectError, selectStatus } from '../store/authSlice';
@@ -10,7 +10,7 @@ import { login } from '../store/authAPI';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import PasswordInput from '../../../common/components/ui-controls/PasswordInput';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 
 type Inputs = {
   email: string;
@@ -33,7 +33,7 @@ export function Login() {
   const auth = useTypedSelector(selectAuth);
 
   useEffect(() => {
-    if (auth) navigate(state?.path || '/');
+    if (auth) navigate(state?.path ?? '/');
   }, [auth, navigate, state?.path]);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {

@@ -63,7 +63,8 @@ export default function NavigationBar() {
             </NavbarLink>
           </NavbarCollapse>
           <NavbarToggle />
-          <div className="flex">
+          <div className="flex items-center dark:text-white gap-2">
+            {auth ? 'Welcome, ' + auth.email : ''}
             {auth ? (
               <Dropdown
                 arrowIcon={false}

@@ -2,7 +2,7 @@
 
 import { Button, Card, Label, Select, TextInput } from 'flowbite-react';
 import { ERoles, ROLES } from '../mock/_DATA_';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 
 type Inputs = {
   role: ERoles;
@@ -31,7 +31,11 @@ export function Profile() {
             </div>
             <Select id="role" {...register('role')}>
               {ROLES.map((_) => {
-                return <option value={_.id}>{_.name}</option>;
+                return (
+                  <option key={_.id} value={_.id}>
+                    {_.name}
+                  </option>
+                );
               })}
             </Select>
           </div>
