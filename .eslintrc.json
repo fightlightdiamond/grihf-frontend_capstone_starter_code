@@ -1,0 +1,28 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    // Tắt các rule no-unused-vars mặc định để dùng plugin
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    // Các rule của eslint-plugin-unused-imports
+    "unused-imports/no-unused-imports": "error",   // Tự động xóa import không dùng
+    "unused-imports/no-unused-vars": ["warn", {    // Cảnh báo biến/tham số không dùng
+      "vars": "all",
+      "varsIgnorePattern": "^_",
+      "args": "after-used",
+      "argsIgnorePattern": "^_"
+    }]
+  }
+}
