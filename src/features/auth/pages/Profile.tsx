@@ -3,6 +3,9 @@
 import { Button, Card, Label, Select, TextInput } from 'flowbite-react';
 import { ERoles, ROLES } from '../mock/_DATA_';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useTypedSelector } from '../../../app/stores';
+import { selectAuth } from '../store/authSlice.ts';
+import { useEffect } from 'react';
 
 type Inputs = {
   role: ERoles;
@@ -13,7 +16,13 @@ type Inputs = {
 };
 
 export function Profile() {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit, reset } = useForm<Inputs>();
+
+  const authState = useTypedSelector(selectAuth);
+
+  useEffect(() => {
+    reset(authState ?? {});
+  }, [authState]);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 

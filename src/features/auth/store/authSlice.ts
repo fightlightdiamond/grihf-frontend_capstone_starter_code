@@ -61,6 +61,7 @@ export const authSlice = createSlice({
       state.error = error;
       state.errors = errors;
     });
+
     //signup
     builder.addCase(signup.pending, (state) => {
       state.status = EStatus.loading;

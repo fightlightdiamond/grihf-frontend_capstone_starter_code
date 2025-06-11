@@ -9,7 +9,7 @@ import {
   Textarea,
   TextInput,
 } from 'flowbite-react';
-import React from 'react';
+
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import type { TReview } from '../../types.ts';
 import { useBookReviewStore } from '../../store/reviewStore.ts';

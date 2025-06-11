@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import { Login } from './Login';
 import { renderWithProviders } from '../../../common/utils/test-utils';

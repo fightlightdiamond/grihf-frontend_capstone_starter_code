@@ -82,8 +82,8 @@ export default function NavigationBar() {
                 <DropdownItem>
                   <Link to={'/profile'}>Your Profile</Link>
                 </DropdownItem>
-                <DropdownItem onClick={() => onLogout()}>
-                  Your Reports
+                <DropdownItem>
+                  <Link to={'view-report'}>Your Reports</Link>
                 </DropdownItem>
                 <DropdownItem onClick={() => onLogout()}>Sign out</DropdownItem>
               </Dropdown>

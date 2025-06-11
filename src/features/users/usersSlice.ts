@@ -1,5 +1,5 @@
-import { UsersState } from './types';
-import { RootState } from '../../app/stores';
+import type { UsersState } from './types';
+import type { RootState } from '../../app/stores';
 import { fetchUser } from './fetchUsers';
 import { createSlice } from '@reduxjs/toolkit';
 import { EStatus } from '../../common/abstracts/enums';
