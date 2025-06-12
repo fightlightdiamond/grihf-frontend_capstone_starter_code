@@ -1,30 +1,31 @@
-import {IBookReview, TReview} from "../types";
-import {_getBookDoctors, bookDoctors} from "../../find-doctors/mock/_DATA_";
+import type { IBookReview, TReview } from '../types';
+import { bookDoctors } from '../../find-doctors/mock/_DATA_';
 
 export const reviews: TReview[] = [];
 
 export function _createReview(review: TReview): Promise<TReview> {
-    reviews.push(review);
+  reviews.push(review);
 
-    return Promise.resolve(review);
+  return Promise.resolve(review);
 }
 
 export function _findReview(id: number): Promise<TReview | undefined> {
-    const res = reviews.find(review => review.id === id);
+  const res = reviews.find((review) => review.id === id);
 
-    return Promise.resolve(res);
+  return Promise.resolve(res);
 }
 
 export function _getBookReviews(userId: number) {
-    const bookReviews: IBookReview[]  = bookDoctors.filter(_ => _.userId === userId)
-        .map(book => {
-            return {
-                ...book,
-                review: reviews.find(review => review.bookDoctorId === book.id)
-            } as IBookReview;
-        })
+  const bookReviews: IBookReview[] = bookDoctors
+    .filter((_) => _.userId === userId)
+    .map((book) => {
+      return {
+        ...book,
+        review: reviews.find((review) => review.bookDoctorId === book?.id),
+      } as IBookReview;
+    });
 
-    console.log('bookReviews', bookReviews)
+  console.log('bookReviews', bookReviews);
 
-    return Promise.resolve(bookReviews);
+  return Promise.resolve(bookReviews);
 }

@@ -94,7 +94,7 @@ export function Register() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="name" value="Name" />
+            <Label htmlFor="name">Name</Label>
           </div>
           <TextInput
             {...register('name')}
@@ -105,7 +105,7 @@ export function Register() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="phone" value="Phone" />
+            <Label htmlFor="phone">Phone</Label>
           </div>
           <TextInput
             {...register('phone')}
@@ -116,7 +116,7 @@ export function Register() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="email1" value="Your email" />
+            <Label htmlFor="email1">Your email</Label>
           </div>
           <TextInput
             {...register('email')}
@@ -128,7 +128,7 @@ export function Register() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password1" value="Your password" />
+            <Label htmlFor="password1">Your password</Label>
           </div>
           <PasswordInput
             register={register('password')}

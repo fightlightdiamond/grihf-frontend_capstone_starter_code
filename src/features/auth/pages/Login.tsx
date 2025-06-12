@@ -55,7 +55,7 @@ export function Login() {
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="email1" value="Your email" />
+            <Label htmlFor="email1">Your email</Label>
           </div>
           <TextInput
             {...register('email')}
@@ -66,7 +66,7 @@ export function Login() {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password1" value="Your password" />
+            <Label htmlFor="password1">Your password</Label>
           </div>
           <PasswordInput
             register={register('password', {

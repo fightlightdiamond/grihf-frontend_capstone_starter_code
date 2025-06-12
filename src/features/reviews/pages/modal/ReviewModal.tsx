@@ -13,6 +13,7 @@ import {
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import type { TReview } from '../../types.ts';
 import { useBookReviewStore } from '../../store/reviewStore.ts';
+import React from 'react';
 
 interface IReviewModelProps {
   userId: number;
@@ -88,7 +89,7 @@ const ReviewModal = ({
               <Label htmlFor="rating">Review:</Label>
             </div>
             <Rating id={'rating'}>
-              {Array.from({ length: 5 }).map((value, indexRating) => (
+              {Array.from({ length: 5 }).map((_, indexRating) => (
                 <RatingStar
                   key={indexRating}
                   onClick={() => handleRatingClick(indexRating)}

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../../app/stores';
+import type { RootState } from '../../../app/stores';
 import { fetchBestService, fetchBestServices } from './bestServicesAPI';
-import { TBestServicesState } from '../types';
+import type { TBestServicesState } from '../types';
 import { EStatus } from '../../../common/abstracts/enums';
 
 const initialState: TBestServicesState = {

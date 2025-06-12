@@ -1,7 +1,11 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import {
+  type Action,
+  configureStore,
+  type ThunkAction,
+} from '@reduxjs/toolkit';
 // import loggerMiddleware from "./middlewares/loggerMiddleware";
 // import {thunk} from 'redux-thunk';
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { type TypedUseSelectorHook, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
 
 export function setupStore(preloadedState?: Partial<RootState>) {

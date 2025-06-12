@@ -13,14 +13,12 @@ This project is part of the StayHealthy initiative to help patients in remote ar
 - ReactJS (Frontend)
 - TailwindCSS (Styling)
 - Zustand (State management)
-- Storybook (UI components)
 - TypeScript
 
 ## 📁 Folder Structure
-- `/src/components` → UI components
-- `/src/pages` → Page-level routes
-- `/src/store` → Zustand stores
-- `/src/api` → API service functions
+- `/*/components` → UI components
+- `/*/pages` → Page-level routes
+- `/*/store` → State management functions
 
 ## 🧪 Run Locally
 ```bash

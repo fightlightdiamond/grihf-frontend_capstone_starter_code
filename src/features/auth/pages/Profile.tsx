@@ -50,7 +50,7 @@ export function Profile() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="name" value="Name" />
+              <Label htmlFor="name">Name</Label>
             </div>
             <TextInput
               {...register('name')}
@@ -60,7 +60,7 @@ export function Profile() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="phone" value="Phone" />
+              <Label htmlFor="phone">Phone</Label>
             </div>
             <TextInput
               {...register('phone')}
@@ -70,7 +70,7 @@ export function Profile() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email1" value="Your email" />
+              <Label htmlFor="email1">Your email</Label>
             </div>
             <TextInput
               {...register('email')}
