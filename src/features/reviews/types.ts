@@ -1,4 +1,5 @@
-import type { IBookDoctor } from '../find-doctors/types';
+import type { IBookDoctor, TDoctor } from '../find-doctors/types';
+import type { TUser } from '../../common/abstracts/types';
 
 export type TReview = {
   id?: number;
@@ -12,4 +13,6 @@ export type TReview = {
 
 export interface IBookReview extends IBookDoctor {
   review: TReview;
+  doctor: TDoctor;
+  userDoctor: TUser;
 }

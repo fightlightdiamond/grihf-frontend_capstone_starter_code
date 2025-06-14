@@ -31,7 +31,6 @@ export const useBookReviewStore = create(
 
           const currentReviews = get().reviews; // ❗ Lấy state đúng cách
           const updated = currentReviews.map((_) => {
-            console.log('ssss', _, review.bookDoctorId);
             if (_.doctorId === review.bookDoctorId) {
               return {
                 ..._,
@@ -40,7 +39,6 @@ export const useBookReviewStore = create(
             }
             return _;
           });
-          console.log('review', updated);
           set({ reviews: updated, error: '' });
         } catch (err) {
           console.log(err);

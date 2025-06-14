@@ -60,8 +60,8 @@ const Review: React.FC = () => {
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   1
                 </TableCell>
-                <TableCell>Sliver</TableCell>
-                <TableCell>Laptop</TableCell>
+                <TableCell>{review.userDoctor.name}</TableCell>
+                <TableCell>{review.doctor.specialty}</TableCell>
                 <TableCell>
                   {review.review ? (
                     <Button disabled={true}>Give Review</Button>

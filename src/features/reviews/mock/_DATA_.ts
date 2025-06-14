@@ -1,5 +1,6 @@
 import type { IBookReview, TReview } from '../types';
-import { bookDoctors } from '../../find-doctors/mock/_DATA_';
+import { bookDoctors, doctors } from '../../find-doctors/mock/_DATA_';
+import { users } from '../../auth/mock/_DATA_.ts';
 
 export const reviews: TReview[] = [];
 
@@ -19,9 +20,12 @@ export function _getBookReviews(userId: number) {
   const bookReviews: IBookReview[] = bookDoctors
     .filter((_) => _.userId === userId)
     .map((book) => {
+      const doctor = doctors.find((doctor) => doctor.id === book?.doctorId);
       return {
         ...book,
         review: reviews.find((review) => review.bookDoctorId === book?.id),
+        doctor: doctor,
+        userDoctor: users.find((user) => doctor?.userId === user?.id),
       } as IBookReview;
     });
 
