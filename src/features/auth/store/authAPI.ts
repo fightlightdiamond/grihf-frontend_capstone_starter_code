@@ -18,6 +18,9 @@ async function returnData(
   } else if (json.errors) {
     return thunkApi.rejectWithValue(json.errors);
   } else if (json.error) {
+    if (Array.isArray(json.error)) {
+      return thunkApi.rejectWithValue(json.error);
+    }
     return thunkApi.rejectWithValue({
       message: json.error,
     });
@@ -33,7 +36,7 @@ export const login = createAsyncThunk<
 >('auth/login', async (account: TLogin, thunkApi) => {
   const response = await _login(account);
 
-  // Check if status is not okay:
+  //Check if status is not okay:
   if (!response) {
     // Return the error message:
     return thunkApi.rejectWithValue({
@@ -44,8 +47,8 @@ export const login = createAsyncThunk<
   localStorage.setItem('auth', JSON.stringify(response));
 
   return response;
-  //
-  // // API Call to register user
+
+  // API Call to register user
   // const response = await fetch(`${API_URL}/api/auth/login`, {
   //     method: "POST",
   //     headers: {

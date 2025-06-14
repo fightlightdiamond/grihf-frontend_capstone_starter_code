@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite --port=3000",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build  && rm -rdf server/dist && mv dist server/",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

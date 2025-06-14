@@ -27,11 +27,12 @@ export function parsePayloadError(payload: unknown): {
   error: string;
   errors: ValidationErrorResponse;
 } {
+  console.log('payload', payload);
   if (typeof (payload as TError)?.message === 'string') {
     return { error: (payload as TError).message, errors: [] };
   }
 
-  if (Array.isArray(payload) && typeof payload[0]?.msg === 'string') {
+  if (Array.isArray(payload)) {
     return { error: '', errors: payload as ValidationErrorResponse };
   }
 
@@ -75,6 +76,8 @@ export const authSlice = createSlice({
       const { error, errors } = parsePayloadError(payload);
       state.error = error;
       state.errors = errors;
+
+      console.log('---------', error, errors);
     });
   },
 });

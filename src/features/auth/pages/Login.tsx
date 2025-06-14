@@ -1,11 +1,10 @@
 'use client';
 
 import { Button, Card, Label, TextInput } from 'flowbite-react';
-import ShowStatus from '../../../common/components/ShowStatus';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../common/hooks';
 import { useTypedSelector } from '../../../app/stores';
-import { selectAuth, selectError, selectStatus } from '../store/authSlice';
+import { selectAuth, selectError, selectErrors } from '../store/authSlice';
 import { login } from '../store/authAPI';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -21,24 +20,39 @@ export function Login() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Inputs>();
 
   const dispatch = useAppDispatch();
-  const status = useTypedSelector(selectStatus);
+  // const status = useTypedSelector(selectStatus);
   const error = useTypedSelector(selectError);
   const { state } = useLocation();
 
   const navigate = useNavigate();
   const auth = useTypedSelector(selectAuth);
+  const errorsValid = useTypedSelector(selectErrors);
 
   useEffect(() => {
     if (auth) navigate(state?.path ?? '/');
   }, [auth, navigate, state?.path]);
 
+  useEffect(() => {
+    errorsValid.forEach((err) => {
+      setError(err.param as keyof Inputs, {
+        type: 'server',
+        message: err.msg,
+      });
+    });
+  }, [errorsValid, setError]);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     dispatch(login(data));
   };
+
+  function errorMessage(message: string | undefined) {
+    return <span className={'text-red-500'}>{message}</span>;
+  }
 
   return (
     <Card className="max-w-md">
@@ -50,9 +64,10 @@ export function Login() {
         </Link>
       </div>
 
-      <img src="/poll/spinx.png" alt="" />
-      <ShowStatus status={status} error={error} />
+      {/*<img src="/poll/spinx.png" alt="" />*/}
+      {/*<ShowStatus status={status} error={error} />*/}
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        {errorMessage(error?.toString())}
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email1">Your email</Label>
@@ -63,17 +78,17 @@ export function Login() {
             type="email"
             placeholder="test@gmail.com"
           />
+          {errorMessage(errors.email?.message)}
         </div>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="password1">Your password</Label>
           </div>
           <PasswordInput
-            register={register('password', {
-              required: 'Password is required',
-            })}
+            register={register('password')}
             error={errors.password?.message}
           />
+          {errorMessage(errors.password?.message)}
         </div>
         <Button type="submit">Login</Button>
         <Button color={'red'} type="submit">

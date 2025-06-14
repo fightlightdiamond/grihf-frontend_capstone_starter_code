@@ -37,7 +37,7 @@ export function Register() {
   } = useForm<Inputs>();
 
   useEffect(() => {
-    if (status) {
+    if (status === EStatus.succeeded) {
       navigate('/');
     }
   }, [navigate, status]);
